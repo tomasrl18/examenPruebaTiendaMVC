@@ -17,14 +17,25 @@
                 <tbody>
                     <?php foreach ($data['users'] as $user): ?>
                         <tr>
-                            <td class="text-center"><?= $user->id ?></td>
-                            <td class="text-center"><?= $user->name ?></td>
-                            <td class="text-center"><?= $user->email ?></td>
                             <td class="text-center">
-                                <a href="<?= ROOT ?>adminUser/update/<?= $user->id ?>"
-                                    class="btn btn-info"
-                                >Editar</a>
+                                <?= $user->id ?>
                             </td>
+
+                            <td class="text-center">
+                                <?= $user->name ?>
+                            </td>
+
+                            <td class="text-center">
+                                <?= $user->email ?>
+                            </td>
+
+                            <td class="text-center">
+                                <a href="<?= ROOT ?>adminUser/edit/<?= $user->id ?>"
+                                    class="btn btn-info">
+                                    Editar
+                                </a>
+                            </td>
+
                             <td class="text-center">
                                 <a href="<?= ROOT ?>adminUser/delete/<?= $user->id ?>"
                                    class="btn btn-danger"
@@ -42,6 +53,7 @@
                         Crear Usuario
                     </a>
                 </div>
+
                 <div class="col-sm-6">
 
                 </div>

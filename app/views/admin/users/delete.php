@@ -3,8 +3,9 @@
     <div class="card-header">
         <h1 class="text-center">Eliminación de un usuario administrador</h1>
     </div>
+
     <div class="card-body">
-        <form action="<?= ROOT ?>adminUser/delete/<?= $data['data']->id ?>" method="POST">
+        <form action="<?= ROOT ?>adminUser/destroy/<?= $data['data']->id ?>" method="POST">
             <div class="form-group text-left">
                 <label for="name">Usuario:</label>
                 <input type="text" name="name" class="form-control"
@@ -12,6 +13,7 @@
                        value="<?= $data['data']->name ?? '' ?>"
                 >
             </div>
+
             <div class="form-group text-left">
                 <label for="email">Correo Electrónico:</label>
                 <input type="email" name="email" class="form-control"
@@ -19,6 +21,7 @@
                        value="<?= $data['data']->email ?? '' ?>"
                 >
             </div>
+
             <div class="form-group">
                 <label for="status">Selecciona un estado</label>
                 <select name="status" id="status" class="form-control" disabled>
@@ -28,6 +31,7 @@
                     <?php endforeach; ?>
                 </select>
             </div>
+
             <div class="form-group text-left">
                 <input type="submit" value="Enviar" class="btn btn-success">
                 <a href="<?= ROOT ?>adminUser" class="btn btn-info">Regresar</a>

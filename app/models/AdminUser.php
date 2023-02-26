@@ -79,6 +79,10 @@ class AdminUser
     {
         $errors = [];
 
+        if($this->existsEmail($user['email']) > 0) {
+            array_push($errors, 'El email ya existe');
+        }
+
         if ($user['password']) {
 
             $sql = 'UPDATE admins SET name=:name, email=:email, password=:password, status=:status, updated_at=:updated_at 
@@ -114,7 +118,6 @@ class AdminUser
         }
 
         return $errors;
-
     }
 
     public function delete($id)
