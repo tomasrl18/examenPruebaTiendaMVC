@@ -30,7 +30,6 @@ class ShopController extends Controller
         } else {
             header('location:' . ROOT);
         }
-
     }
 
     public function logout()
@@ -89,15 +88,19 @@ class ShopController extends Controller
             if ($name == '') {
                 array_push($errors, 'El nombre es requerido');
             }
+
             if ($email == '') {
                 array_push($errors, 'El email es requerido');
             }
+
             if ($message == '') {
                 array_push($errors, 'El mensaje es requerido');
             }
+
             if ( ! filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 array_push($errors, 'El correo electrónico no es válido');
             }
+
             if (count($errors) == 0) {
                 if ( $this->model->sendEmail($name, $email, $message)) {
                     $data = [
@@ -111,6 +114,7 @@ class ShopController extends Controller
                         'colorButton'	=> 'btn-success',
                         'textButton'	=> 'Regresar'
                     ];
+
                     $this->view('mensaje', $data);
                 } else {
                     $data = [
@@ -124,6 +128,7 @@ class ShopController extends Controller
                         'colorButton' => 'btn-danger',
                         'textButton' => 'Regresar'
                     ];
+
                     $this->view('mensaje', $data);
                 }
             } else {
@@ -133,10 +138,10 @@ class ShopController extends Controller
                     'errors' => $errors,
                     'active' => 'contact',
                 ];
+
                 $this->view('shop/contact', $data);
             }
         } else {
-
             $session = new Session();
 
             if ($session->getLogin()) {
@@ -151,7 +156,6 @@ class ShopController extends Controller
             } else {
                 header('location:' . ROOT);
             }
-
         }
     }
 }
