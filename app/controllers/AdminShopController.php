@@ -24,6 +24,12 @@ class AdminShopController extends Controller
         } else {
             header('LOCATION:' . ROOT . 'admin');
         }
+    }
 
+    public function logout()
+    {
+        $session = new AdminSession();
+        $session->logout();
+        header('location:' . ROOT . 'admin');
     }
 }

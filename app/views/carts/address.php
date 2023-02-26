@@ -8,10 +8,12 @@
             <li class="breadcrumb-item"><a href="#">Verifica los datos</a></li>
         </ol>
     </nav>
+
     <div class="card-header">
         <h1>Datos de envío</h1>
         <p>Por favor, compruebe los datos de envío y cambie lo que considere necesario</p>
     </div>
+
     <div class="card-body">
         <form action="<?= ROOT ?>cart/paymentmode/" method="POST">
             <div class="form-group text-left">
