@@ -48,7 +48,7 @@
         Comprar
     </a>
 <?php else: ?>
-    <a href="<?= ROOT ?>login/index" class="btn btn-primary">
+    <a href="<?= ROOT ?>login" class="btn btn-primary">
         Comprar
     </a>
 <?php endif; ?>

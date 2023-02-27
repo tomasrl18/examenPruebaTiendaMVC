@@ -30,13 +30,7 @@
                     </td>
 
                     <td class="text-center">
-                        <?php $descriptionDecoded = html_entity_decode($product->description)?>
-
-                        <?php if (strlen($descriptionDecoded) > 30): ?>
-                            <?= mb_substr($descriptionDecoded, 0, 30) . '...' ?>
-                        <?php else: ?>
-                            <?= $descriptionDecoded ?>
-                        <?php endif; ?>
+                        <?= descriptionDelimited(html_entity_decode($product->description)) ?>
                     </td>
 
                     <td class="text-center">
@@ -71,3 +65,15 @@
     </div>
 </div>
 <?php include_once(VIEWS . 'footer.php')?>
+
+<?php
+function descriptionDelimited($string){
+    $limit = 30;
+
+    if(strlen($string) > $limit) {
+        $hola = substr($string, 0, $limit);
+        return $hola . '...';
+    }
+
+    return $string;
+}

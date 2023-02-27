@@ -19,6 +19,7 @@ class AdminUser
 
             $sql = 'INSERT INTO admins(name, email, password, status, deleted, login_at, created_at, updated_at, deleted_at) 
                 VALUES (:name, :email, :password, :status, :deleted, :login_at, :created_at, :updated_at, :deleted_at)';
+
             $params = [
                 ':name' => $data['name'],
                 ':email' => $data['email'],
@@ -30,9 +31,10 @@ class AdminUser
                 ':updated_at' => null,
                 ':deleted_at' => null,
             ];
-            $query = $this->db->prepare($sql);
-            $response = $query->execute($params);
 
+            $query = $this->db->prepare($sql);
+
+            $response = $query->execute($params);
         }
 
         return $response;
@@ -84,10 +86,11 @@ class AdminUser
         }
 
         if ($user['password']) {
-
             $sql = 'UPDATE admins SET name=:name, email=:email, password=:password, status=:status, updated_at=:updated_at 
                     WHERE id=:id';
+
             $pass = hash_hmac('sha512', $user['password'], ENCRIPTKEY);
+
             $params = [
                 ':id' => $user['id'],
                 ':name' => $user['name'],
@@ -96,9 +99,7 @@ class AdminUser
                 ':status' => $user['status'],
                 ':updated_at' => date('Y-m-d H:i:s'),
             ];
-
         } else {
-
             $sql = 'UPDATE admins SET name=:name, email=:email, status=:status, updated_at=:updated_at 
                     WHERE id=:id';
             $params = [
@@ -108,7 +109,6 @@ class AdminUser
                 ':status' => $user['status'],
                 ':updated_at' => date('Y-m-d H:i:s'),
             ];
-
         }
 
         $query = $this->db->prepare($sql);

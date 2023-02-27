@@ -145,36 +145,47 @@ class LoginController extends Controller
             if ($firstName == '') {
                 array_push($errors, 'El nombre es requerido');
             }
+
             if ($lastName1 == '') {
                 array_push($errors, 'El primer apellido es requerido');
             }
+
             if ($lastName2 == '') {
                 array_push($errors, 'El segundo apellido es requerido');
             }
+
             if ($email == '') {
                 array_push($errors, 'El email es requerido');
             }
+
             if ($password1 == '') {
                 array_push($errors, 'La contraseña es requerido');
             }
+
             if ($password2 == '') {
                 array_push($errors, 'Repetir contraseña es requerido');
             }
+
             if ($address == '') {
                 array_push($errors, 'La dirección es requerida');
             }
+
             if ($city == '') {
                 array_push($errors, 'La ciudad es requerida');
             }
+
             if ($state == '') {
                 array_push($errors, 'La provincia es requerida');
             }
+
             if ($postcode == '') {
                 array_push($errors, 'El código postal es requerido');
             }
+
             if ($country == '') {
                 array_push($errors, 'El país es requerido');
             }
+
             if ($password1 != $password2) {
                 array_push($errors, 'Las contraseñas deben ser iguales');
             }
@@ -212,9 +223,7 @@ class LoginController extends Controller
                     ];
 
                     $this->view('mensaje', $data);
-
                 }
-
             } else {
                 $data = [
                     'titulo' => 'Registro',
@@ -249,12 +258,15 @@ class LoginController extends Controller
             if ($id == '') {
                 array_push($errors, 'El usuario no existe');
             }
+
             if ($password1 == '') {
                 array_push($errors, 'La contraseña es requerida');
             }
+
             if ($password2 == '') {
                 array_push($errors, 'Repetir contraseña es requerido');
             }
+
             if ($password1 != $password2) {
                 array_push($errors, 'Ambas claves deben ser iguales');
             }
@@ -270,9 +282,7 @@ class LoginController extends Controller
                 ];
 
                 $this->view('changepassword', $data);
-
             } else {
-
                 if ($this->model->changePassword($id, $password1)) {
 
                     $data = [
@@ -288,9 +298,7 @@ class LoginController extends Controller
                     ];
 
                     $this->view('mensaje', $data);
-
                 } else {
-
                     $data = [
                         'titulo' => 'Error al cambiar contraseña',
                         'menu'   => false,
@@ -360,7 +368,6 @@ class LoginController extends Controller
                 ];
                 $this->view('login', $data);
             }
-
         } else {
             $this->index();
         }
