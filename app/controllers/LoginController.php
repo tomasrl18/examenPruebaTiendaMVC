@@ -14,6 +14,7 @@ class LoginController extends Controller
         if (isset($_COOKIE['shoplogin'])) {
 
             $value = explode('|', $_COOKIE['shoplogin']);
+
             $dataForm = [
                 'user' => $value[0],
                 'password' => $value[1],
@@ -48,12 +49,12 @@ class LoginController extends Controller
             $this->view('olvido', $data);
 
         } else {
-
             $email = $_POST['email'] ?? '';
 
             if ($email == '') {
                 array_push($errors, 'El email es requerido');
             }
+
             if( ! filter_var($email, FILTER_VALIDATE_EMAIL)) {
                 array_push($errors, 'El correo electrónico no es válido');
             }
@@ -79,7 +80,6 @@ class LoginController extends Controller
                         $this->view('mensaje', $data);
 
                     } else {
-
                         $data = [
                             'titulo' => 'Error con correo',
                             'menu' => false,
@@ -93,7 +93,6 @@ class LoginController extends Controller
                         ];
 
                         $this->view('mensaje', $data);
-
                     }
                 }
             }
@@ -108,7 +107,6 @@ class LoginController extends Controller
 
                 $this->view('olvido', $data);
             }
-
         }
     }
 
@@ -333,11 +331,13 @@ class LoginController extends Controller
             $errors = $this->model->verifyUser($user, $password);
 
             $value = $user . '|' . $password;
+
             if ($remember == 'on') {
                 $date = time() + (60*60*24*7);
             } else {
                 $date = time() - 1;
             }
+
             setcookie('shoplogin', $value, $date);
 
             $dataForm = [
@@ -362,11 +362,7 @@ class LoginController extends Controller
             }
 
         } else {
-
             $this->index();
-
         }
-
-
     }
 }

@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $data['titulo'] ?></title>
+    <title>Bienvenid@ a nuestra tienda</title>
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
@@ -68,9 +68,15 @@
                             </form>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="<?= ROOT ?>shop/logout" class="nav-link">Salir</a>
+                        <li class="nav-item d-flex flex-row">
+                            <?php if(isset($_SESSION['user'])): ?>
+                                <a href="<?= ROOT ?>shop/logout" class="nav-link text-light" style="display: inline-block">Cerrar sesión</a>
+                            <?php else: ?>
+                                <a href="<?= ROOT ?>login/index" class="nav-link text-light">Iniciar sesión</a>
+                                <a href="<?= ROOT ?>login/registro" class="nav-link text-light">Registro</a>
+                            <?php endif; ?>
                         </li>
+
                     </ul>
                 </div>
             <?php endif; ?>
@@ -93,7 +99,7 @@
         </div>
     </nav>
 
-<div class="container-fluid">
+    <div class="container-fluid">
     <div class="row content">
         <div class="col-sm-2"></div>
 

@@ -13,23 +13,23 @@ class ShopController extends Controller
     {
         $session = new Session();
 
-        if ($session->getLogin()) {
+        //if ($session->getLogin()) {
 
             $mostSold = $this->model->getMostSold();
             $news = $this->model->getNews();
 
             $data = [
-                'titulo' => 'Bienvenid@ a nuestra tienda',
                 'menu' => true,
                 'subtitle' => 'Artículos mas vendidos',
                 'data' => $mostSold,
                 'subtitle2' => 'Artículos nuevos',
                 'news' => $news,
             ];
+
             $this->view('shop/index', $data);
-        } else {
-            header('location:' . ROOT);
-        }
+//        } else {
+//            header('location:' . ROOT);
+//        }
     }
 
     public function logout()
@@ -62,7 +62,7 @@ class ShopController extends Controller
     {
         $session = new Session();
 
-        if ($session->getLogin()) {
+        //if ($session->getLogin()) {
 
             $data = [
                 'titulo' => 'Quienes somos',
@@ -71,9 +71,9 @@ class ShopController extends Controller
             ];
 
             $this->view('shop/whoami', $data);
-        } else {
-            header('location:' . ROOT);
-        }
+//        } else {
+//            header('location:' . ROOT);
+//        }
     }
 
     public function contact()
@@ -143,8 +143,8 @@ class ShopController extends Controller
             }
         } else {
             $session = new Session();
-
-            if ($session->getLogin()) {
+//
+//            if ($session->getLogin()) {
 
                 $data = [
                     'titulo' => 'Contacta con nosotros',
@@ -153,9 +153,9 @@ class ShopController extends Controller
                 ];
 
                 $this->view('shop/contact', $data);
-            } else {
-                header('location:' . ROOT);
-            }
+//            } else {
+//                header('location:' . ROOT);
+//            }
         }
     }
 }
